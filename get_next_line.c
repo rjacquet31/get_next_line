@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-	char line;
+	char	line;
+
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
 	line = get_current_line(fd);
-
-	return(line);
+	return (line);
 }
