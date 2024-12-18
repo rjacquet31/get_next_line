@@ -28,6 +28,8 @@ static char	*text_to_stash(int fd, char *buf, char *stash)
 		buf[read_line] = '\0';
 		if (!stash)
 			stash = ft_strdup("");
+		if (!stash)
+			return (NULL);
 		temp = stash;
 		stash = ft_strjoin(temp, buf);
 		free(temp);
@@ -75,7 +77,11 @@ char	*get_next_line(int fd)
 	line = text_to_stash(fd, buf, stash);
 	free(buf);
 	if (!line)
+	{
+		free(stash);
+		stash = NULL;
 		return (NULL);
+	}
 	stash = extract(line);
 	return (line);
 }
